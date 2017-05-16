@@ -1,4 +1,5 @@
-#Weather Bot#
+Weather Bot
+===========
 
 This is a rule base Command line Interface (CLI) bot which can converse with the user and tell the current weather at any place. It can also help to forecast weather for next two days.
 
@@ -8,11 +9,12 @@ For getting the weather the bot uses the Yahoo! Weather API.
 
 - - - -
 
-##Running the bot##
+Running the bot
+---------------
 
 To run the bot on your terminal - 
 
  1. Go to terminal
- 2. type **node app.js** and enjoy!
+ 2. run **node app.js** and enjoy!
 
 
