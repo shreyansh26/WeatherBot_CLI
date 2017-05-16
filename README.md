@@ -15,6 +15,6 @@ Running the bot
 To run the bot on your terminal - 
 
  1. Go to terminal
- 2. run **node app.js** and enjoy!
+ 2. Run **node app.js** and enjoy!
 
 
