@@ -95,13 +95,7 @@ let forecastWeatherNoCmp = (response, data) => {
 		let getForecast = resp.item.forecast.filter(item => {
 			return item.date === parseDate;
 		})[0];
-		//console.log(getForecast);
 		let location = `${resp.location.city}, ${resp.location.country}`;
-		//console.log(location);
-		//let regEx = new RegExp(data.weather, "i");
-		//let testConditions = regEx.test(getForecast.text); //true or false
-		//console.log(`${getAverage(getForecast)}`);
-		//console.log(`${data.time}, ${getPrefix(getForecast.code, 'future')} ${getForecast.text.bold.red} in ${location}. It will be ${getFeel(Number(getForecast.temp)).red.bold} at ${getAverage(getForecast).red.bold} degrees Celsius.`);
 		return `${capitalizeFirstLetter(data.time)}, ${getPrefix(getForecast.code, 'future')} ${getForecast.text.bold.red} in ${location}. It will be ${getFeel(Number(getAverage(getForecast))).red.bold} at ${getAverage(getForecast).red.bold} degrees Celsius.`;
 	} else {
 		return "I don't seem to know about this place... Sorry :(";
