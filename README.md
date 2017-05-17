@@ -18,8 +18,8 @@ To run the bot on your terminal -
  2. Run **node app.js** and enjoy!
 
 
-Examples
---------
+Examples/Usage
+--------------
 
  * What is the weather like in Mumbai
  * How will the weather be in Cairo tomorrow
