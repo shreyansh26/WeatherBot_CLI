@@ -44,6 +44,17 @@ let getDate = day => {
 	}
 }
 
+let getAverage = forecast => {
+	let low = Number(forecast.low);
+	let high = Number(forecast.high);
+	let av = Math.floor((low+high)/2);
+	return av.toString();
+}
+
+let capitalizeFirstLetter = string => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 let currentWeather = response => {
 	if(response.query.results) {
 		let resp = response.query.results.channel;
@@ -75,7 +86,30 @@ let forecastWeather = (response, data) => {
 	}
 }
 
+let forecastWeatherNoCmp = (response, data) => {
+	// data is user's query word from xRegExp
+	if(response.query.results){
+		// convert 'tomorrow', 'today',etc. to date formats
+		let parseDate = getDate(data.time);
+		let resp = response.query.results.channel;
+		let getForecast = resp.item.forecast.filter(item => {
+			return item.date === parseDate;
+		})[0];
+		//console.log(getForecast);
+		let location = `${resp.location.city}, ${resp.location.country}`;
+		//console.log(location);
+		//let regEx = new RegExp(data.weather, "i");
+		//let testConditions = regEx.test(getForecast.text); //true or false
+		//console.log(`${getAverage(getForecast)}`);
+		//console.log(`${data.time}, ${getPrefix(getForecast.code, 'future')} ${getForecast.text.bold.red} in ${location}. It will be ${getFeel(Number(getForecast.temp)).red.bold} at ${getAverage(getForecast).red.bold} degrees Celsius.`);
+		return `${capitalizeFirstLetter(data.time)}, ${getPrefix(getForecast.code, 'future')} ${getForecast.text.bold.red} in ${location}. It will be ${getFeel(Number(getAverage(getForecast))).red.bold} at ${getAverage(getForecast).red.bold} degrees Celsius.`;
+	} else {
+		return "I don't seem to know about this place... Sorry :(";
+	}
+}
+
 module.exports = {
 	currentWeather,
-	forecastWeather
+	forecastWeather,
+	forecastWeatherNoCmp
 }

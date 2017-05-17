@@ -9,7 +9,12 @@ const rl = Readline.createInterface({
 
 const matcher = require('./matcher');
 const weather = require('./weather');
-const {currentWeather, forecastWeather} = require('./parser');
+const {currentWeather, forecastWeather, forecastWeatherNoCmp} = require('./parser');
+
+let capitalizeFirstLetter = string => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
 rl.setPrompt('> ');
 rl.prompt();
@@ -17,14 +22,14 @@ rl.on('line', reply => {
 	matcher(reply, data => {
 		switch(data.intent){
 			case 'Hello':
-				console.log(`${data.entities.greeting} to you too!`);
+				console.log(`${capitalizeFirstLetter(data.entities.greeting)} to you too!`);
 				rl.prompt();
 				break;
 			case 'Exit':
 				console.log("Good bye! Have a great day!");
 				process.exit(0);
 			case 'CurrentWeather':
-				console.log(`Checking weather for ${data.entities.city}...`);
+				console.log(`Checking weather for ${capitalizeFirstLetter(data.entities.city)}...`);
 				//get weather api
 				weather(data.entities.city, 'current')
 					.then(response => {
@@ -38,11 +43,25 @@ rl.on('line', reply => {
 					});
 				break;
 			case 'WeatherForecast':
-				console.log(`Checking weather for ${data.entities.city}...`);
+				console.log(`Checking weather for ${capitalizeFirstLetter(data.entities.city)}...`);
 				//get weather api
 				weather(data.entities.city)
 					.then(response => {
 						let parseResult = forecastWeather(response, data.entities);
+						console.log(parseResult);
+						rl.prompt();
+					})
+					.catch(error => {
+						console.log("There seems to be a problem connecting to the Weather service!");
+						rl.prompt();
+					});
+				break;
+			case 'WeatherForecastNoCmp':
+				console.log(`Checking weather for ${capitalizeFirstLetter(data.entities.city)}...`);
+				//get weather api
+				weather(data.entities.city)
+					.then(response => {
+						let parseResult = forecastWeatherNoCmp(response, data.entities);
 						console.log(parseResult);
 						rl.prompt();
 					})
