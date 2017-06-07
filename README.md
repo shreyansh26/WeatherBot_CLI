@@ -17,7 +17,7 @@ Running the bot locally
 
 ### Environment Setup
 1. Install NodeJS. See [this](https://nodejs.org/en/download/ "Download Node") for details.
-2. `cd` to the folder and run `npm install`
+2. `cd` to the root of the project and run `npm install`
 
 ### Run the bot
 1. Go to terminal
