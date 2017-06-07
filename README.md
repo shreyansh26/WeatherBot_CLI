@@ -7,15 +7,21 @@ The bot is rule based i.e it uses Regular Expressions (RegEx) to interpret the u
 
 For getting the weather the bot uses the Yahoo! Weather API.
 
-- - - -
+- - - - -
 
-Running the bot
----------------
+Running the bot locally
+-----------------------
 
-To run the bot on your terminal - 
+###Dependecies
+* node (v6.9 or above)
 
- 1. Go to terminal
- 2. Run **node app.js** and enjoy!
+###Environment Setup
+1. Install NodeJS. See [this](https://nodejs.org/en/download/ "Download Node")
+2. `cd` to the folder and run `npm install`
+
+###Running the bot
+1. Go to terminal
+2. Run `node app.js` and enjoy!
 
 
 Examples/Usage
