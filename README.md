@@ -12,14 +12,14 @@ For getting the weather the bot uses the Yahoo! Weather API.
 Running the bot locally
 -----------------------
 
-###Dependecies
+### Dependecies
 * node (v6.9 or above)
 
-###Environment Setup
+### Environment Setup
 1. Install NodeJS. See [this](https://nodejs.org/en/download/ "Download Node")
 2. `cd` to the folder and run `npm install`
 
-###Running the bot
+### Run the bot
 1. Go to terminal
 2. Run `node app.js` and enjoy!
 
